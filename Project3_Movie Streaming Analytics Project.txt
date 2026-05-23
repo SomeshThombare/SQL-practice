@@ -1,0 +1,36 @@
+
+--Movie Streaming Analytics Project  
+
+Business Scenario
+
+A streaming platform (like Netflix) wants to analyze:
+
+QUESTIONS---
+
+  Total Monthly Revenue (Active Users Only)
+  Revenue by Plan
+  Most Watched Movies
+  Total Watch Time per User
+  User Ranking by Watch Time (Window Function)
+  Monthly New Users
+  Top Genre by Watch Time
+
+   STEP 1: Create Database
+   STEP 2: Create Tables
+ 
+Users-- UserID ,FullName ,City ,JoinDate 
+ 
+SubscriptionPlans--  PlanID, PlanName, MonthlyFee  
+ 
+
+Subscriptions-- SubscriptionID, UserID, PlanID, StartDate,
+                Status VARCHAR(20), -- Active / Cancelled,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (PlanID) REFERENCES SubscriptionPlans(PlanID)
+ 
+
+ Movies-- MovieID, Title, Genre 
+
+WatchHistory-- WatchID, UserID ,MovieID, WatchDate, WatchTimeMinutes, 
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (MovieID) REFERENCES Movies(MovieID)
